@@ -15,11 +15,18 @@ function buildGeoCall(city) {
   var cityCallEndpoint = `${callBase}${cityName}&${appid}`;
   return cityCallEndpoint;
 }
-//! This is used for testing - hardcoded city until I build the rest of it out
+
+//!TODO - Hook up Search from frontend
 let city = "fargo";
+
 // Build City Call
 const geoCallEndpoint = buildGeoCall(city);
 // https://api.openweathermap.org/geo/1.0/direct?q=fargo&appid={ID}
+
+// Generate city date - generate lat/long for weather call
+let cityData = await getData(geoCallEndpoint);
+let lat = cityData[0].lat;
+let lon = cityData[0].lon;
 
 //Function to build URL for OpenWeather API
 function buildWeatherCall(lat, lon) {
@@ -32,7 +39,7 @@ function buildWeatherCall(lat, lon) {
   return weatherCallEndpoint;
 }
 
-const weatherCallEndpoint = buildWeatherCall(90, 90);
+const weatherCallEndpoint = buildWeatherCall(lat, lon);
 //  https://api.openweathermap.org/data/2.5/weather?lat=90&lon=90&appid={ID}
 
 // Call Handler
@@ -49,6 +56,5 @@ async function getData(endpoint) {
   }
 }
 
-// Generate data
-let cityData = await getData(geoCallEndpoint);
+//Generate Weather Data
 let weatherData = await getData(weatherCallEndpoint);

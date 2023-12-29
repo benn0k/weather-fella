@@ -159,3 +159,19 @@ body {
 main {
   flex: 1 0 auto;
 }
+
+.dusty-pink {
+  background-color: #c296a7;
+}
+
+.card.sky-blue {
+  background-color: #9ad1d4;
+}
+
+#sidebar {
+  height: fit-content !important;
+}
+
+main > .row {
+  min-height: 460px;
+}

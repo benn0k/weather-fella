@@ -150,25 +150,12 @@ select {
   vertical-align: middle;
 }
 
-.body-wrapper {
-  width: 100vw;
-  height: 100vw;
-  background: radial-gradient(circle, transparent 25%, #cfe6f8 26%),
-    linear-gradient(
-      45deg,
-      transparent 46%,
-      #c296a7 47%,
-      #c296a7 52%,
-      transparent 53%
-    ),
-    linear-gradient(
-      135deg,
-      transparent 46%,
-      #c296a7 47%,
-      #c296a7 52%,
-      transparent 53%
-    );
-  background-size: 2em 2em;
-  background-color: #cfe6f8;
-  opacity: 0.2;
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
 }

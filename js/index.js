@@ -1,4 +1,10 @@
-import { cityData, weatherData } from "./api.js";
+import { getData } from "./api.js";
+export { cityName };
 
-console.log(cityData);
+// Buttons, Inputs
+let citySearch = document.querySelector("#city-search");
+let cityName = citySearch.value;
+
+let weatherData = await getData();
+
 console.log(weatherData);

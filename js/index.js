@@ -1,10 +1,7 @@
 import { getData } from "./api.js";
-export { cityName };
 
-// Buttons, Inputs
-let citySearch = document.querySelector("#city-search");
-let cityName = citySearch.value;
-
+// TODO - Hook this up to a click handler
 let weatherData = await getData();
-
 console.log(weatherData);
+
+// Desctructure Data into HTML and Inject it into DOM

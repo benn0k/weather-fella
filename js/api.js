@@ -5,11 +5,11 @@ export { getData };
 let citySearch = document.querySelector("#city-search");
 let cityName = citySearch.value;
 
-// * Returns a object with data based on
+// * Returns a object with data based on City value
 async function getData() {
   //* API Key
   const appid = "appid=ae61075132cbaa8fb984d546e6783f50";
-  //? Better way to obfuscate this?
+  let city = cityName; //I should probably just replace cityName with city
 
   //Function to build URL for geocoding API
   function buildGeoCall(city) {
@@ -21,8 +21,6 @@ async function getData() {
     var cityCallEndpoint = `${callBase}${cityName}&${appid}`;
     return cityCallEndpoint;
   }
-
-  let city = cityName;
 
   // Build City Call
   const geoCallEndpoint = buildGeoCall(city);
@@ -43,12 +41,11 @@ async function getData() {
     var weatherCallEndpoint = `${callBase}${lat}&${lon}&${appid}`;
     return weatherCallEndpoint;
   }
-
+  // Build weather call with lat/lon of selected city
   const weatherCallEndpoint = buildWeatherCall(lat, lon);
   //  https://api.openweathermap.org/data/2.5/weather?lat=90&lon=90&appid={ID}
 
-  // Call Handler
-
+  // API Call Handler
   async function getData(endpoint) {
     console.log(`Generating endpoint data`);
 
@@ -61,7 +58,8 @@ async function getData() {
       console.log(error);
     }
   }
-  //Generate Weather Data
+
+  // Generate data, return data
   let weatherData = await getData(weatherCallEndpoint);
   return weatherData;
 }

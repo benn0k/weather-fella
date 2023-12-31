@@ -158,14 +158,19 @@ body {
 
 main {
   flex: 1 0 auto;
+  background-color: #ede9e9;
 }
 
 .dusty-pink {
   background-color: #c296a7;
 }
 
-.card.sky-blue {
-  background-color: #9ad1d4;
+.card.white-smoke {
+  background-color: #f7f4f3;
+}
+
+#search:hover {
+  color: #7b0828;
 }
 
 #sidebar {

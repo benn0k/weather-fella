@@ -1,12 +1,12 @@
 export { sanitizeData, displayData };
 import { getData } from "./api.js";
 
-// * Bundles data into an object
+// * Bundles data into usable object
 function sanitizeData(weatherData) {
   const name = weatherData.name;
   const temp = weatherData.main.temp;
   console.log(weatherData);
-  console.log(name);
+  console.log(temp);
 }
 
 //* Displays data
@@ -15,7 +15,6 @@ async function displayData() {
   let weatherData = await getData();
   // catch error
   if (!weatherData) {
-    console.error("No vaild city found: check API call");
     return;
   }
   // Returns an object with only the needed data

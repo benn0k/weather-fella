@@ -32,6 +32,7 @@ async function getData() {
   // Catch error
   if (!cityData[0]) {
     citySearch.value = "";
+    console.error("No vaild city found: check API call");
     //todo - generate a more visable warning
     //todo - catch 'null' errors - if I search for nothing, I get an unspecified error
     return;

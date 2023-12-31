@@ -1,7 +1,8 @@
-import { getData } from "./api.js";
+import { displayData } from "./helpers.js";
 
-// TODO - Hook this up to a click handler
-let weatherData = await getData();
-console.log(weatherData);
+const button = document.querySelector("#search");
 
-// Desctructure Data into HTML and Inject it into DOM
+//! Remove this when done testing
+displayData();
+
+button.addEventListener("click", displayData);

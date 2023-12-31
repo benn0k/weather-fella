@@ -2,14 +2,15 @@ export { getData };
 
 //Grab City Value from DOM
 
-let citySearch = document.querySelector("#city-search");
-let cityName = citySearch.value;
-
 // * Returns a object with data based on City value
 async function getData() {
   //* API Key
   const appid = "appid=ae61075132cbaa8fb984d546e6783f50";
-  let city = cityName; //I should probably just replace cityName with city
+
+  // Grab value from search, set to 'city'
+  let citySearch = document.querySelector("#city-search");
+  let cityName = citySearch.value;
+  let city = cityName;
 
   //Function to build URL for geocoding API
   function buildGeoCall(city) {
@@ -28,6 +29,14 @@ async function getData() {
 
   // Generate city date - generate lat/long for weather call
   let cityData = await getData(geoCallEndpoint);
+  // Catch error
+  if (!cityData[0]) {
+    citySearch.value = "";
+    //todo - generate a more visable warning
+    //todo - catch 'null' errors - if I search for nothing, I get an unspecified error
+    return;
+  }
+
   let lat = cityData[0].lat;
   let lon = cityData[0].lon;
 
@@ -38,7 +47,7 @@ async function getData() {
     var lon = `lon=${lon}`;
     const callBase = "https://api.openweathermap.org/data/2.5/weather?";
     //Put it all together
-    var weatherCallEndpoint = `${callBase}${lat}&${lon}&${appid}`;
+    var weatherCallEndpoint = `${callBase}${lat}&${lon}&units=imperial&${appid}`;
     return weatherCallEndpoint;
   }
   // Build weather call with lat/lon of selected city
@@ -47,7 +56,7 @@ async function getData() {
 
   // API Call Handler
   async function getData(endpoint) {
-    console.log(`Generating endpoint data`);
+    // console.log(`Generating endpoint data`);
 
     try {
       const response = await fetch(endpoint, { cache: "no-cache" });
@@ -62,4 +71,5 @@ async function getData() {
   // Generate data, return data
   let weatherData = await getData(weatherCallEndpoint);
   return weatherData;
+  //todo - return API call, will probably need to structure this data into an array and return that
 }

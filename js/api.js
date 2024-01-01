@@ -27,8 +27,9 @@ async function getData() {
   const geoCallEndpoint = buildGeoCall(city);
   // https://api.openweathermap.org/geo/1.0/direct?q=fargo&appid={ID}
 
-  // Generate city date - generate lat/long for weather call
+  // Generate city dat - generate lat/long for weather call
   let cityData = await getData(geoCallEndpoint);
+
   // Catch error
   if (!cityData[0]) {
     citySearch.value = "";

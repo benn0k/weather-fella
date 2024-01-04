@@ -5,10 +5,23 @@ function sanitizeData(weatherData) {
   const { name, main, clouds, wind, sys, visibility } = weatherData; // destructure the object
   const { sunrise, sunset } = sys; // destructure the sys object
 
+  const mainWeatherRounded = Object.keys(main).reduce((acc, key) => {
+    const currentValue = main[key];
+
+    // If the current item is a number, round it
+    if (typeof currentValue == "number") {
+      acc[key] = Math.floor(currentValue);
+    } else {
+      acc[key] = currentValue;
+    }
+
+    return acc;
+  }, {});
+
   // Package the data into a new object
   const dataObject = {
     name,
-    mainWeather: main,
+    mainWeather: mainWeatherRounded,
     clouds,
     wind,
     sunrise,
@@ -17,12 +30,12 @@ function sanitizeData(weatherData) {
   };
 
   //Iterate through mainWeather
-  Object.keys(dataObject.mainWeather).forEach((item) => {
-    if (typeof dataObject.mainWeather[item] == "number") {
-      dataObject.mainWeather[item] = Math.floor(dataObject.mainWeather[item]);
-      console.log(dataObject.mainWeather[item]);
-    }
-  });
+  // Object.keys(dataObject.mainWeather).forEach((item) => {
+  //   if (typeof dataObject.mainWeather[item] == "number") {
+  //     dataObject.mainWeather[item] = Math.floor(dataObject.mainWeather[item]);
+  //     console.log(dataObject.mainWeather[item]);
+  //   }
+  // });
 
   console.log(dataObject);
   return dataObject;

@@ -1,8 +1,25 @@
-export { sanitizeData, displayData };
+export { displayData, sanitizeData }; //! my preference (and best practice) is to export all functions from a module at the bottom of the file instead of the top
 import { getData } from "./api.js";
 
 // * Remove unused data, returns an object
 function sanitizeData(weatherData) {
+  //! this can be cleaned up quite a bit, allowing us to use a "const" here like this:
+  // const { name, main, clouds, wind, sys, visibility } = weatherData; // destructure the object
+  // const { sunrise, sunset } = sys; // destructure the sys object
+
+  // // package the data into a new object
+  // const dataObject = {
+  //   name,
+  //   mainWeather: main,
+  //   clouds,
+  //   wind,
+  //   sunrise,
+  //   sunset,
+  //   visibility,
+  // };
+
+  // return dataObject;
+
   let dataObject = {};
 
   //Grab data from object and package into a simplified object
@@ -34,16 +51,18 @@ function sanitizeData(weatherData) {
 }
 
 //* Displays data
+//! I'd wrap the inner logic in a try/catch, and then show an alert or something in the catch block if there's an error
 async function displayData(object) {
+  //! this param is unused and could be removed here
   // Get data from API and set to weatherData
-  let weatherData = await getData();
+  let weatherData = await getData(); // ! i'd make this a "const" ...
   // catch error
   if (!weatherData) {
     console.error("No data returned from API");
     return;
   }
   // Returns an object with only the needed data
-  weatherData = sanitizeData(weatherData);
+  weatherData = sanitizeData(weatherData); //! ...then set this to a new variable (like "sanitizedData")
   console.log(weatherData);
 
   //New HTML Fragment, target HTML element we're going to append it to

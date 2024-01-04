@@ -16,8 +16,15 @@ function sanitizeData(weatherData) {
     visibility,
   };
 
-  // todo - can we normalize this data with a .floor? Get rid of decimal.
+  //Iterate through mainWeather
+  Object.keys(dataObject.mainWeather).forEach((item) => {
+    if (typeof dataObject.mainWeather[item] == "number") {
+      dataObject.mainWeather[item] = Math.floor(dataObject.mainWeather[item]);
+      console.log(dataObject.mainWeather[item]);
+    }
+  });
 
+  console.log(dataObject);
   return dataObject;
 }
 

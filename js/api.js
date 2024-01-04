@@ -69,9 +69,8 @@ async function getData() {
   //  https://api.openweathermap.org/data/2.5/weather?lat=90&lon=90&appid={ID}
 
   // Generate data, return data
-  const weatherData = await getAPIData(weatherCallEndpoint); // ! should be a "const"
+  const weatherData = await getAPIData(weatherCallEndpoint);
   return weatherData;
-  //todo - return API call, will probably need to structure this data into an array and return that
 }
 
 export { getData };

@@ -180,3 +180,9 @@ main {
 main > .row {
   min-height: 460px;
 }
+
+#results-container {
+  display: flex;
+  flex-direction: column;
+  line-height: 25px;
+}

@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/benn0k/weather-fella#readme",
   "dependencies": {
-    "parcel": "^2.10.3"
+    "materialize-css": "^1.0.0",
+    "parcel": "^2.10.3",
+    "waait": "^1.0.5"
   }
 }

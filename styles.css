@@ -162,7 +162,7 @@ main {
 }
 
 .dusty-pink {
-  background-color: #c296a7;
+  background-color: #c296a7 !important;
 }
 
 .card.white-smoke {
@@ -185,4 +185,25 @@ main > .row {
   display: flex;
   flex-direction: column;
   line-height: 25px;
+}
+
+.search-button {
+  margin-bottom: 30px;
+  margin-left: 20px;
+  border: 1px solid rgba(160, 160, 160, 0.467) !important;
+  width: 150px;
+  cursor: pointer;
+}
+.search-button:hover {
+  border: 1px solid #7b0889 !important;
+  background-color: #886f8b;
+}
+
+#search {
+  margin: unset !important;
+  color: unset !important;
+}
+
+.page-footer {
+  padding-top: unset !important;
 }

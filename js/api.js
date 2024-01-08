@@ -1,6 +1,8 @@
 //* API Key
 const appid = "appid=ae61075132cbaa8fb984d546e6783f50";
 
+const citySearch = document.querySelector("#city-search");
+
 //* Builds API call to return lat/lon data
 
 function buildGeoCall(city) {
@@ -31,8 +33,6 @@ async function getAPIData(endpoint) {
 
 // * Returns a object with data based on City value
 async function getData() {
-  const citySearch = document.querySelector("#city-search");
-
   const { value: cityName } = citySearch;
   const city = cityName;
 

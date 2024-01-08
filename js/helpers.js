@@ -1,12 +1,20 @@
 import { getData } from "./api.js";
+import { citySearch } from "./index.js";
 
 //* Displays data
-
 //todo - if I click search really fast, sometimes I get multiple sets of
 async function displayData() {
+  // Grab results dom element
   const targetElement = document.getElementById("results-container");
+
+  // if search is empty
+  if (citySearch.value.length === 0) {
+    console.error("No search term provided");
+    return;
+  }
   // Clear out any results
   targetElement.textContent = "";
+
   try {
     // Get data from API and set to weatherData
     const weatherData = await getData();

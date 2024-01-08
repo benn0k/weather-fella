@@ -1,11 +1,18 @@
 import { displayData } from "./helpers.js";
 
-const button = document.querySelector("#search");
+const searchButton = document.querySelector(".search-button");
+const citySearch = document.querySelector("#city-search");
 
 // //! Remove this when done testing
 displayData();
 
-button.addEventListener("click", displayData);
+searchButton.addEventListener("click", displayData);
 
-//todo - we should also allow return keypresses to work
-//todo - currently, this only works when you click the word search
+//Run displayData on "enter" keypress
+citySearch.addEventListener("keypress", function (e) {
+  if (e.key === "Enter") {
+    displayData();
+  }
+});
+
+export { citySearch };

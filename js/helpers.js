@@ -9,7 +9,7 @@ async function displayData() {
 
   // if search is empty
   if (citySearch.value.length === 0) {
-    console.error("No search term provided");
+    alert("No search term provided");
     return;
   }
   // Clear out any results
@@ -67,6 +67,7 @@ async function displayData() {
 
     // Append Fragment to results card
     targetElement.appendChild(fragment);
+    targetElement.style.removeProperty("display");
   } catch {
     console.error("Cannot Display Data");
   }
